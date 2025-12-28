@@ -1,0 +1,17 @@
+<nav class="nav">
+  <a routerLink="/" class="brand">🎰 Casino</a>
+
+  <div class="links" *ngIf="(user$ | async) as u; else loggedOut">
+    <a routerLink="/blackjack">Blackjack</a>
+    <a routerLink="/slots">Slot</a>
+    <a routerLink="/f1">F1 Race</a>
+
+    <span class="wallet">💰 Crediti: <b>{{ credits$ | async }}</b></span>
+    <button (click)="recharge()">Ricarica +10000</button>
+    <button class="ghost" (click)="logout()">Logout</button>
+  </div>
+
+  <ng-template #loggedOut>
+    <a routerLink="/login">Login</a>
+  </ng-template>
+</nav>

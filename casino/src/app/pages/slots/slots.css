@@ -1,0 +1,7 @@
+.card { border:1px solid #ddd; border-radius:12px; padding:14px; }
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+input { width:120px; padding:6px; border:1px solid #ccc; border-radius:10px; }
+.slot { display:flex; gap:10px; margin:16px 0; }
+.reel { font-size:48px; border:1px solid #ccc; border-radius:14px; width:90px; height:90px; display:flex; align-items:center; justify-content:center; }
+.status { color:#333; }
+.rules { margin-top:12px; color:#444; }

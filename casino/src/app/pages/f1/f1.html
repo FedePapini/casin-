@@ -1,0 +1,34 @@
+<h2>🏁 F1 Race Simulator</h2>
+
+<div class="card">
+  <div class="row">
+    <label>Pista</label>
+    <select [(ngModel)]="selectedTrack">
+      <option *ngFor="let t of tracks" [value]="t.key">{{ t.name }}</option>
+    </select>
+
+    <label>Pilota</label>
+    <select [(ngModel)]="selectedDriver">
+      <option *ngFor="let d of drivers" [value]="d.key">{{ d.name }} ({{ d.car }})</option>
+    </select>
+
+    <label>Puntata</label>
+    <input type="number" [(ngModel)]="bet" min="1" />
+
+    <button (click)="race()">Avvia gara</button>
+  </div>
+
+  <p class="status">{{ resultMsg }}</p>
+  <p *ngIf="win>0">Premio: <b>{{ win }}</b> crediti</p>
+
+  <div *ngIf="standings.length>0">
+    <h3>Classifica</h3>
+    <ol>
+      <li *ngFor="let s of standings">{{ s.name }} — {{ s.score }}</li>
+    </ol>
+  </div>
+
+  <p class="hint">
+    La resa cambia con la pista: Monza favorisce velocità, Monaco favorisce handling.
+  </p>
+</div>

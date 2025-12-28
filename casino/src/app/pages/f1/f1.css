@@ -1,0 +1,5 @@
+.card { border:1px solid #ddd; border-radius:12px; padding:14px; }
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+select, input { padding:6px; border:1px solid #ccc; border-radius:10px; }
+.status { margin-top:10px; color:#333; }
+.hint { color:#555; font-size:14px; }

@@ -1,0 +1,7 @@
+.card { border:1px solid #ddd; border-radius:12px; padding:14px; }
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+input { width:120px; padding:6px; border:1px solid #ccc; border-radius:10px; }
+.status { margin-top:10px; color:#333; }
+.hands { display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px; }
+.cards { display:flex; flex-wrap:wrap; gap:6px; }
+.c { border:1px solid #ccc; padding:6px 8px; border-radius:10px; background:#fff; }

@@ -1,0 +1,32 @@
+<h2>🂡 Blackjack</h2>
+
+<div class="card">
+  <div class="row">
+    <label>Puntata</label>
+    <input type="number" [(ngModel)]="bet" min="1" />
+    <button (click)="newHand()">Nuova mano</button>
+  </div>
+
+  <p class="status">{{ status }}</p>
+
+  <div class="hands">
+    <div>
+      <h3>Tu ({{ playerValue }})</h3>
+      <div class="cards">
+        <span class="c" *ngFor="let c of player">{{ cardToString(c) }}</span>
+      </div>
+    </div>
+
+    <div>
+      <h3>Banco ({{ dealerValue }})</h3>
+      <div class="cards">
+        <span class="c" *ngFor="let c of dealer">{{ cardToString(c) }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="inHand && !settled">
+    <button (click)="hit()">Hit</button>
+    <button (click)="stand()">Stand</button>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<h2>🎰 Slot Machine</h2>
+
+<div class="card">
+  <div class="row">
+    <label>Puntata</label>
+    <input type="number" [(ngModel)]="bet" min="1" />
+    <button (click)="spin()">Gira</button>
+  </div>
+
+  <div class="slot">
+    <div class="reel">{{ reels[0] }}</div>
+    <div class="reel">{{ reels[1] }}</div>
+    <div class="reel">{{ reels[2] }}</div>
+  </div>
+
+  <p class="status">{{ msg }}</p>
+  <p *ngIf="lastWin>0">Premio: <b>{{ lastWin }}</b> crediti</p>
+
+  <div class="rules">
+    <p><b>Payout</b></p>
+    <ul>
+      <li>💎💎💎 = x10</li>
+      <li>⭐⭐⭐ = x6</li>
+      <li>🔔🔔🔔 = x4</li>
+      <li>🍋🍋🍋 = x3</li>
+      <li>🍒🍒🍒 = x2</li>
+      <li>2 uguali = push (x1)</li>
+    </ul>
+  </div>
+</div>

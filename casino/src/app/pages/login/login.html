@@ -1,0 +1,16 @@
+<h2>Login</h2>
+<div class="card">
+  <label>Email</label>
+  <input [(ngModel)]="email" placeholder="email" />
+
+  <label>Password</label>
+  <input [(ngModel)]="password" type="password" placeholder="password" />
+
+  <div class="row">
+    <button (click)="login()">Login</button>
+    <button (click)="register()">Registrati</button>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p class="hint">Alla registrazione ricevi 1000 crediti iniziali.</p>
+</div>

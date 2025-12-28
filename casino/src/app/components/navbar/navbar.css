@@ -1,0 +1,7 @@
+.nav { display:flex; gap:12px; align-items:center; padding:10px 12px; border-bottom:1px solid #ddd; }
+.brand { font-weight:700; text-decoration:none; color:#111; }
+.links { display:flex; gap:10px; align-items:center; margin-left:auto; flex-wrap:wrap; }
+a { text-decoration:none; color:#222; }
+.wallet { margin-left:10px; }
+button { padding:6px 10px; border:1px solid #ccc; background:#fff; cursor:pointer; border-radius:8px; }
+button.ghost { background:transparent; }
