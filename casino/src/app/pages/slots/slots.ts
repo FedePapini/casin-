@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WalletService } from '../../services/wallet.service';
+import { CommonModule } from '@angular/common';
 
 type Symbol = '🍒'|'🍋'|'🔔'|'⭐'|'💎';
 
 @Component({
   selector: 'app-slots',
   standalone: true,
-  imports: [FormsModule],
-  templateUrl: './slots.component.html',
-  styleUrls: ['./slots.component.css']
+  imports: [FormsModule, CommonModule],
+  templateUrl: './slots.html',
+  styleUrls: ['./slots.css']
 })
 
 export class SlotsComponent {

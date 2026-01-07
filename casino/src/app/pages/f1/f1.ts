@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WalletService } from '../../services/wallet.service';
+import { CommonModule } from '@angular/common';
 
 type TrackKey = 'monza'|'monaco'|'silverstone';
-type DriverKey = 'ver'|'ham'|'lec'|'nor'|'alo';
+type DriverKey = 'ver'|'ham'|'lec'|'nor'|'alo'|'pia'|'tsu'|'str'|'sai'|'alb'|'rus'|'ant';
 
 type Driver = {
   key: DriverKey;
@@ -22,7 +23,7 @@ type Track = {
 @Component({
   selector: 'app-f1',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './f1.html',
   styleUrls: ['./f1.css']
 })
@@ -37,11 +38,19 @@ export class F1Component {
   ];
 
   drivers: Driver[] = [
-    { key: 'ver', name: 'Max V.', car: 'Red Rocket', stats: { speed: 92, handling: 88, consistency: 86 } },
-    { key: 'ham', name: 'Lewis H.', car: 'Silver Arrow', stats: { speed: 88, handling: 86, consistency: 90 } },
-    { key: 'lec', name: 'Charles L.', car: 'Scarlet', stats: { speed: 90, handling: 84, consistency: 82 } },
-    { key: 'nor', name: 'Lando N.', car: 'Papaya', stats: { speed: 87, handling: 85, consistency: 84 } },
-    { key: 'alo', name: 'Fernando A.', car: 'Green Dart', stats: { speed: 85, handling: 89, consistency: 83 } }
+    { key: 'ver', name: 'Verstappen', car: 'Red Bull', stats: { speed: 89, handling: 88, consistency: 88 } },
+    { key: 'ham', name: 'Hamilton', car: 'Ferrari', stats: { speed: 89, handling: 86, consistency: 90 } },
+    { key: 'lec', name: 'Leclerc', car: 'Ferrari', stats: { speed: 89, handling: 88, consistency: 85 } },
+    { key: 'nor', name: 'Norris', car: 'McLaren', stats: { speed: 90, handling: 85, consistency: 80 } },
+    { key: 'alo', name: 'Alonso', car: 'Aston Martin', stats: { speed: 85, handling: 86, consistency: 85 } },
+    { key: 'pia', name: 'Piastri', car: 'McLaren', stats: { speed: 90, handling: 87, consistency: 83 } },
+    { key: 'tsu', name: 'Tsunoda', car: 'Red Bull', stats: { speed: 89, handling: 80, consistency: 78 } },
+    { key: 'str', name: 'Stroll', car: 'Aston Martin', stats: { speed: 85, handling: 76, consistency: 78 } },
+    { key: 'sai', name: 'Sainz', car: 'Williams', stats: { speed: 87, handling: 87, consistency: 82 } },
+    { key: 'alb', name: 'Albon', car: 'Williams', stats: { speed: 87, handling: 82, consistency: 76 } },
+    { key: 'rus', name: 'Russell', car: 'Mercedes', stats: { speed: 89, handling: 87, consistency: 84 } },
+    { key: 'ant', name: 'Antonelli', car: 'Mercedes', stats: { speed: 89, handling: 82, consistency: 78 } },
+
   ];
 
   selectedTrack: TrackKey = 'monza';

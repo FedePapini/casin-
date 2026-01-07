@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WalletService } from '../../services/wallet.service';
+import { CommonModule } from '@angular/common';
 
 type Card = { r: string; s: string }; // rank, suit
 
 @Component({
   selector: 'app-blackjack',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './blackjack.html',
   styleUrls: ['./blackjack.css']
 })
