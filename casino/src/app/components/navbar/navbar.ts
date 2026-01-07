@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { WalletService } from '../../services/wallet.service';
-import { Observable } from 'rxjs';
-import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -14,17 +12,11 @@ import { User } from 'firebase/auth';
   styleUrls: ['./navbar.css']
 })
 export class NavbarComponent {
-  credits$!: Observable<number>;
-  user$!: Observable<User | null>;
+  private auth = inject(AuthService);
+  private wallet = inject(WalletService);
 
-  constructor(public auth: AuthService, public wallet: WalletService) {
-    this.credits$ = this.wallet.credits$;
-    this.user$ = this.auth.user$;
-  }
-
-  async recharge() {
-    await this.wallet.addCredits(10000);
-  }
+  user$ = this.auth.user$;
+  credits$ = this.wallet.credits$;
 
   async logout() {
     await this.auth.logout();

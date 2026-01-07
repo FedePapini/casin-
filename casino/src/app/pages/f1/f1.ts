@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { WalletService } from '../../services/wallet.service';
 import { CommonModule } from '@angular/common';
 
+
 type TrackKey = 'monza'|'monaco'|'silverstone';
 type DriverKey = 'ver'|'ham'|'lec'|'nor'|'alo'|'pia'|'tsu'|'str'|'sai'|'alb'|'rus'|'ant';
 

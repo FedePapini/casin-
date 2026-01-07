@@ -1,32 +1,54 @@
-<h2>🂡 Blackjack</h2>
+<h2 class="vegas-title">🂡 Blackjack</h2>
 
-<div class="card">
-  <div class="row">
-    <label>Puntata</label>
-    <input type="number" [(ngModel)]="bet" min="1" />
-    <button (click)="newHand()">Nuova mano</button>
+<div class="vegas-card">
+  <div class="vegas-row">
+    <div>
+      <label>Puntata</label>
+      <input class="vegas-input" type="number" [(ngModel)]="bet" min="1" />
+    </div>
+
+    <button class="vegas-btn gold neon" (click)="newHand()">🎲 Nuova mano</button>
+
+    <span class="chip">
+      <span class="dot"></span>
+      Bet: <b>{{ bet }}</b>
+    </span>
+
+    <span class="statusBadge" [class.ok]="inHand && !settled" [class.end]="settled">
+      {{ inHand && !settled ? 'IN GIOCO' : (settled ? 'RISULTATO' : 'PRONTO') }}
+    </span>
   </div>
 
-  <p class="status">{{ status }}</p>
+  <div class="vegas-divider"></div>
+
+  <p class="vegas-muted">{{ status }}</p>
 
   <div class="hands">
-    <div>
-      <h3>Tu ({{ playerValue }})</h3>
+    <div class="handPanel">
+      <h3>Tu <span class="score">({{ playerValue }})</span></h3>
       <div class="cards">
-        <span class="c" *ngFor="let c of player">{{ cardToString(c) }}</span>
+        <div class="bjCard" *ngFor="let c of player" [class.red]="c.s==='♥' || c.s==='♦'">
+          <div class="corner">{{ c.r }}{{ c.s }}</div>
+          <div class="bigSuit">{{ c.s }}</div>
+          <div class="corner bottom">{{ c.r }}{{ c.s }}</div>
+        </div>
       </div>
     </div>
 
-    <div>
-      <h3>Banco ({{ dealerValue }})</h3>
+    <div class="handPanel">
+      <h3>Banco <span class="score">({{ dealerValue }})</span></h3>
       <div class="cards">
-        <span class="c" *ngFor="let c of dealer">{{ cardToString(c) }}</span>
+        <div class="bjCard" *ngFor="let c of dealer" [class.red]="c.s==='♥' || c.s==='♦'">
+          <div class="corner">{{ c.r }}{{ c.s }}</div>
+          <div class="bigSuit">{{ c.s }}</div>
+          <div class="corner bottom">{{ c.r }}{{ c.s }}</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row" *ngIf="inHand && !settled">
-    <button (click)="hit()">Hit</button>
-    <button (click)="stand()">Stand</button>
+  <div class="vegas-row" style="margin-top:14px;" *ngIf="inHand && !settled">
+    <button class="vegas-btn primary neon" (click)="hit()">Carta</button>
+    <button class="vegas-btn" (click)="stand()">Rimani</button>
   </div>
 </div>

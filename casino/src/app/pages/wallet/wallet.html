@@ -1,0 +1,18 @@
+<h2 class="vegas-title">💰 Wallet</h2>
+
+<div class="vegas-card">
+  <p class="vegas-pill">Crediti attuali: <b>{{ credits$ | async }}</b></p>
+
+  <div class="vegas-row" style="margin-top:12px;">
+    <div>
+      <label>Quanto vuoi aggiungere?</label>
+      <input class="vegas-input" type="number" [(ngModel)]="amount" min="1" step="1" />
+    </div>
+    <button class="vegas-btn gold" (click)="add()">Aggiungi crediti</button>
+  </div>
+
+  <p style="margin-top:12px;" *ngIf="msg">{{ msg }}</p>
+  <p class="vegas-muted" style="margin-top:8px;">
+    Crediti virtuali: puoi ricaricare quanto vuoi.
+  </p>
+</div>

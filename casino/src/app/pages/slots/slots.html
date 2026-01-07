@@ -1,30 +1,30 @@
-<h2>🎰 Slot Machine</h2>
+<h2 class="vegas-title">🎰 Slot 5x4</h2>
 
-<div class="card">
-  <div class="row">
-    <label>Puntata</label>
-    <input type="number" [(ngModel)]="bet" min="1" />
-    <button (click)="spin()">Gira</button>
+<div class="vegas-card">
+  <div class="vegas-row">
+    <div>
+      <label>Puntata</label>
+      <input class="vegas-input" type="number" [(ngModel)]="bet" min="1" step="1" />
+    </div>
+    <button class="vegas-btn primary" (click)="spin()">Gira</button>
+    <span class="vegas-pill">🃏 WILD • 10 Paylines</span>
   </div>
 
-  <div class="slot">
-    <div class="reel">{{ reels[0] }}</div>
-    <div class="reel">{{ reels[1] }}</div>
-    <div class="reel">{{ reels[2] }}</div>
+  <div class="grid">
+    <div class="rowGrid" *ngFor="let r of grid">
+      <div class="sym" *ngFor="let s of r">{{ s }}</div>
+    </div>
   </div>
 
-  <p class="status">{{ msg }}</p>
-  <p *ngIf="lastWin>0">Premio: <b>{{ lastWin }}</b> crediti</p>
+  <p class="vegas-muted">{{ msg }}</p>
 
-  <div class="rules">
-    <p><b>Payout</b></p>
-    <ul>
-      <li>💎💎💎 = x10</li>
-      <li>⭐⭐⭐ = x6</li>
-      <li>🔔🔔🔔 = x4</li>
-      <li>🍋🍋🍋 = x3</li>
-      <li>🍒🍒🍒 = x2</li>
-      <li>2 uguali = push (x1)</li>
+  <div *ngIf="lastWin > 0" class="winList">
+    <p style="margin:0 0 8px;"><b>Vincite per payline</b></p>
+    <ul style="margin:0; padding-left:18px;">
+      <li *ngFor="let w of lineWins">
+        {{ w.line }}: {{ w.count }}x {{ w.symbol }} → +{{ w.win }}
+      </li>
     </ul>
+    <p style="margin:8px 0 0;">Totale: <b>+{{ lastWin }}</b> crediti</p>
   </div>
 </div>

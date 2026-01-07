@@ -1,7 +1,66 @@
-.card { border:1px solid #ddd; border-radius:12px; padding:14px; }
-.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-input { width:120px; padding:6px; border:1px solid #ccc; border-radius:10px; }
-.slot { display:flex; gap:10px; margin:16px 0; }
-.reel { font-size:48px; border:1px solid #ccc; border-radius:14px; width:90px; height:90px; display:flex; align-items:center; justify-content:center; }
-.status { color:#333; }
-.rules { margin-top:12px; color:#444; }
+/* base */
+.grid{ margin: 16px 0; display: grid; gap: 10px; }
+.rowGrid{ display: grid; grid-template-columns: repeat(5, 78px); gap: 10px; }
+
+.sym{
+  font-size: 42px;
+  border-radius: 18px;
+  width: 78px;
+  height: 78px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border: 1px solid rgba(255,255,255,.12);
+  background:
+    radial-gradient(40px 40px at 30% 25%, rgba(255,255,255,.14), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+  box-shadow: 0 12px 30px rgba(0,0,0,.30);
+  transform: translateZ(0);
+}
+
+.sym:hover{
+  box-shadow: 0 0 0 2px rgba(255,43,214,.14), 0 0 22px rgba(43,220,255,.12);
+}
+
+/* Spin effect */
+@keyframes spinBlur {
+  0%   { transform: translateY(0) scale(1); filter: blur(0px); opacity: 1; }
+  20%  { transform: translateY(-6px) scale(1.02); filter: blur(1px); opacity: .9; }
+  60%  { transform: translateY(6px) scale(.98); filter: blur(1px); opacity: .9; }
+  100% { transform: translateY(0) scale(1); filter: blur(0px); opacity: 1; }
+}
+.spinning .sym{
+  animation: spinBlur .28s ease-in-out infinite;
+}
+
+/* Win flash */
+@keyframes winFlash {
+  0%   { box-shadow: 0 0 0 2px rgba(246,211,107,.10), 0 12px 30px rgba(0,0,0,.30); }
+  50%  { box-shadow: 0 0 0 2px rgba(246,211,107,.35), 0 0 30px rgba(246,211,107,.18), 0 18px 40px rgba(0,0,0,.38); }
+  100% { box-shadow: 0 0 0 2px rgba(246,211,107,.10), 0 12px 30px rgba(0,0,0,.30); }
+}
+.winFlash .sym{
+  animation: winFlash .55s ease-in-out 1;
+}
+
+/* Shake card on win */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+.shake{
+  animation: shake .35s ease-in-out 1;
+}
+
+.winList{
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(246,211,107,.18);
+  background: linear-gradient(90deg, rgba(246,211,107,.10), rgba(255,239,154,.04));
+}

@@ -1,0 +1,7 @@
+.card { border:1px solid #ddd; border-radius:12px; padding:14px; max-width:520px; }
+.row { display:flex; gap:10px; align-items:end; flex-wrap:wrap; margin-top:10px; }
+label { display:block; width:100%; }
+input { width:180px; padding:8px; border:1px solid #ccc; border-radius:10px; }
+button { padding:8px 12px; border:1px solid #ccc; background:#fff; cursor:pointer; border-radius:10px; }
+.msg { margin-top:10px; }
+.hint { margin-top:10px; color:#555; font-size:14px; }

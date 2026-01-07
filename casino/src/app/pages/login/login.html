@@ -1,16 +1,25 @@
-<h2>Login</h2>
-<div class="card">
-  <label>Email</label>
-  <input [(ngModel)]="email" placeholder="email" />
+<h2 class="vegas-title">🔐 Accesso</h2>
 
-  <label>Password</label>
-  <input [(ngModel)]="password" type="password" placeholder="password" />
+<div class="vegas-card">
+  <div class="vegas-row">
+    <div style="flex:1; min-width:240px;">
+      <label>Email</label>
+      <input class="vegas-input" [(ngModel)]="email" placeholder="email" />
+    </div>
 
-  <div class="row">
-    <button (click)="login()">Login</button>
-    <button (click)="register()">Registrati</button>
+    <div style="flex:1; min-width:240px;">
+      <label>Password</label>
+      <input class="vegas-input" [(ngModel)]="password" type="password" placeholder="password" />
+    </div>
   </div>
 
-  <p class="error" *ngIf="error">{{ error }}</p>
-  <p class="hint">Alla registrazione ricevi 1000 crediti iniziali.</p>
+  <div class="vegas-divider"></div>
+
+  <div class="vegas-row">
+    <button class="vegas-btn primary" (click)="login()">Login</button>
+    <button class="vegas-btn gold" (click)="register()">Registrati</button>
+  </div>
+
+  <p style="margin-top:12px; color: var(--danger);" *ngIf="error">{{ error }}</p>
+  <p class="vegas-muted" style="margin-top:8px;">Alla registrazione ricevi 1000 crediti iniziali.</p>
 </div>

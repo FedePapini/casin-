@@ -1,34 +1,55 @@
-<h2>🏁 F1 Race Simulator</h2>
-
-<div class="card">
-  <div class="row">
-    <label>Pista</label>
-    <select [(ngModel)]="selectedTrack">
-      <option *ngFor="let t of tracks" [value]="t.key">{{ t.name }}</option>
-    </select>
-
-    <label>Pilota</label>
-    <select [(ngModel)]="selectedDriver">
-      <option *ngFor="let d of drivers" [value]="d.key">{{ d.name }} ({{ d.car }})</option>
-    </select>
-
-    <label>Puntata</label>
-    <input type="number" [(ngModel)]="bet" min="1" />
-
-    <button (click)="race()">Avvia gara</button>
+<div class="race-hero">
+  <div class="race-title">
+    <h2>🏁 F1 Race Simulator</h2>
+    <span class="paddock">🛠️ Paddock • Strategy • Grip</span>
   </div>
 
-  <p class="status">{{ resultMsg }}</p>
-  <p *ngIf="win>0">Premio: <b>{{ win }}</b> crediti</p>
+  <div class="race-panel carbon">
+    <div class="vegas-row">
+      <div>
+        <label>Pista</label>
+        <select class="vegas-input" [(ngModel)]="selectedTrack">
+          <option *ngFor="let t of tracks" [value]="t.key">{{ t.name }}</option>
+        </select>
+      </div>
 
-  <div *ngIf="standings.length>0">
-    <h3>Classifica</h3>
-    <ol>
-      <li *ngFor="let s of standings">{{ s.name }} — {{ s.score }}</li>
-    </ol>
+      <div>
+        <label>Pilota</label>
+        <select class="vegas-input" [(ngModel)]="selectedDriver">
+          <option *ngFor="let d of drivers" [value]="d.key">{{ d.name }} ({{ d.car }})</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Puntata</label>
+        <input class="vegas-input" type="number" [(ngModel)]="bet" min="1" />
+      </div>
+
+      <button class="vegas-btn primary" (click)="race()">Avvia gara</button>
+    </div>
+
+    <p class="race-msg">{{ resultMsg }}</p>
+    <p *ngIf="win>0" class="vegas-pill">🏆 Premio: <b>{{ win }}</b> crediti</p>
   </div>
 
-  <p class="hint">
-    La resa cambia con la pista: Monza favorisce velocità, Monaco favorisce handling.
-  </p>
+  <div class="race-grid" *ngIf="standings.length>0">
+    <div class="race-panel">
+      <h3 style="margin:0 0 8px;">📋 Classifica</h3>
+      <ol class="standings">
+        <li *ngFor="let s of standings">{{ s.name }} — {{ s.score }}</li>
+      </ol>
+    </div>
+
+    <div class="race-panel">
+      <h3 style="margin:0 0 8px;">🧠 Come funziona</h3>
+      <p class="vegas-muted" style="margin:0;">
+        Ogni pista “pesa” velocità / handling / consistenza.
+        Un po’ di random simula traffico, gomme, errori e setup.
+      </p>
+      <div class="vegas-divider"></div>
+      <p class="vegas-muted" style="margin:0;">
+        Monza favorisce velocità • Monaco favorisce handling • Silverstone bilanciata.
+      </p>
+    </div>
+  </div>
 </div>

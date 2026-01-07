@@ -1,7 +1,107 @@
-.card { border:1px solid #ddd; border-radius:12px; padding:14px; }
-.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-input { width:120px; padding:6px; border:1px solid #ccc; border-radius:10px; }
-.status { margin-top:10px; color:#333; }
-.hands { display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px; }
-.cards { display:flex; flex-wrap:wrap; gap:6px; }
-.c { border:1px solid #ccc; padding:6px 8px; border-radius:10px; background:#fff; }
+.hands{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  margin-top:12px;
+}
+@media (max-width: 860px){
+  .hands{ grid-template-columns: 1fr; }
+}
+
+.handPanel{
+  padding:12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+}
+
+.score{
+  color: rgba(246,243,255,.70);
+  font-weight: 700;
+}
+
+.cards{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.bjCard{
+  width: 92px;
+  height: 128px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.14);
+  background:
+    radial-gradient(60px 40px at 30% 25%, rgba(255,255,255,.18), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
+}
+
+.bjCard.red{ color: #ffb2b8; }
+.bjCard:not(.red){ color: #e9e7ff; }
+
+.corner{
+  position:absolute;
+  left:10px;
+  top:8px;
+  font-weight: 900;
+  letter-spacing:.2px;
+  font-size: 14px;
+  opacity:.92;
+}
+.corner.bottom{
+  left:auto;
+  top:auto;
+  right:10px;
+  bottom:8px;
+  transform: rotate(180deg);
+}
+
+.bigSuit{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 52px;
+  opacity:.92;
+  text-shadow: 0 0 18px rgba(255,255,255,.10);
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(246,211,107,.25);
+  background: linear-gradient(90deg, rgba(246,211,107,.18), rgba(255,239,154,.06));
+}
+.chip .dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--gold2), rgba(246,211,107,.30));
+  box-shadow: 0 0 18px rgba(246,211,107,.20);
+}
+
+.statusBadge{
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(246,243,255,.82);
+  font-weight: 800;
+  letter-spacing:.2px;
+}
+.statusBadge.ok{
+  border-color: rgba(43,220,255,.20);
+  box-shadow: 0 0 22px rgba(43,220,255,.10);
+}
+.statusBadge.end{
+  border-color: rgba(246,211,107,.22);
+  box-shadow: 0 0 22px rgba(246,211,107,.10);
+}
