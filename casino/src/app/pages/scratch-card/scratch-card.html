@@ -1,0 +1,58 @@
+<div class="scratch-container">
+  <h1>✨ 🎫 GRATTA e VINCI 🎫 ✨</h1>
+
+  <!-- Bet Section -->
+  <div class="bet-section">
+    <div class="bet-input">
+      <label>Scommessa:</label>
+      <input type="number" [(ngModel)]="betAmount" min="1" max="1000" [disabled]="gameActive">
+    </div>
+    <button (click)="newCard()" [disabled]="gameActive" class="play-btn">
+      🎫 Nuova Carta
+    </button>
+  </div>
+
+  <!-- Message -->
+  <div class="message" [class.win]="lastWin > 0" [class.lose]="lastWin === 0 && cards.length > 0 && allCardsRevealed">
+    {{ message }}
+  </div>
+
+  <!-- Game Board -->
+  <div class="game-board" *ngIf="cards.length > 0">
+    <div class="cards-grid">
+      <div *ngFor="let card of cards; let i = index"
+           class="card"
+           [class.revealed]="card.revealed"
+           [class.scratching]="card.scratching"
+           [class.matched]="card.matched"
+           (click)="scratchCard(i)">
+        <div class="card-cover"></div>
+        <div class="card-value" [style.backgroundColor]="getCardColor(card.value)">
+          {{ card.value }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Game Button -->
+  <div class="end-game-section" *ngIf="gameActive">
+    <button (click)="endGame()" class="end-btn">🛑 Termina Gioco</button>
+  </div>
+
+  <!-- Instructions -->
+  <div class="instructions" *ngIf="!gameActive && cards.length === 0">
+    <h2>Come Giocare</h2>
+    <ul>
+      <li>✅ Seleziona l'importo della scommessa</li>
+      <li>✅ Clicca "Nuova Carta" per iniziare</li>
+      <li>✅ Gratta tutte le 25 carte (5x5)</li>
+      <li>✅ Vinci quando becchi numeri uguali:</li>
+      <ul>
+        <li>💰 Due numeri uguali (2x)</li>
+        <li>💰 Tre numeri uguali (8x)</li>
+        <li>💰 Quattro numeri uguali (20x)</li>
+        <li>🏆 JACKPOT! Cinque numeri uguali (50x)</li>
+      </ul>
+    </ul>
+  </div>
+</div>

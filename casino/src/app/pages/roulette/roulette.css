@@ -1,0 +1,439 @@
+.roulette-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 15px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 20px 0 15px 0;
+  border-bottom: 2px solid gold;
+  padding-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.1em;
+  margin: 15px 0 10px 0;
+  color: #ffd700;
+}
+
+/* Wheel Section */
+.wheel-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.roulette-wheel {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    green 0deg 9.73deg,
+    red 9.73deg 19.46deg,
+    black 19.46deg 29.19deg,
+    red 29.19deg 38.92deg,
+    black 38.92deg 48.65deg,
+    red 48.65deg 58.38deg,
+    black 58.38deg 68.11deg,
+    red 68.11deg 77.84deg,
+    black 77.84deg 87.57deg,
+    red 87.57deg 97.3deg,
+    black 97.3deg 107.03deg,
+    red 107.03deg 116.76deg,
+    black 116.76deg 126.49deg,
+    red 126.49deg 136.22deg,
+    black 136.22deg 145.95deg,
+    red 145.95deg 155.68deg,
+    black 155.68deg 165.41deg,
+    red 165.41deg 175.14deg,
+    black 175.14deg 184.87deg,
+    red 184.87deg 194.6deg,
+    black 194.6deg 204.33deg,
+    red 204.33deg 214.06deg,
+    black 214.06deg 223.79deg,
+    red 223.79deg 233.52deg,
+    black 233.52deg 243.25deg,
+    red 243.25deg 252.98deg,
+    black 252.98deg 262.71deg,
+    red 262.71deg 272.44deg,
+    black 272.44deg 282.17deg,
+    red 282.17deg 291.9deg,
+    black 291.9deg 301.63deg,
+    red 301.63deg 311.36deg,
+    black 311.36deg 321.09deg,
+    red 321.09deg 330.82deg,
+    black 330.82deg 340.55deg,
+    red 340.55deg 350.28deg,
+    black 350.28deg 360deg
+  );
+  border: 5px solid gold;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.wheel-numbers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number-slot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.75em;
+  color: white;
+  top: 150px;
+  left: 150px;
+  margin: -15px 0 0 -15px;
+}
+
+.number-slot.red {
+  background: red;
+}
+
+.number-slot.black {
+  background: black;
+}
+
+.number-slot.green {
+  background: green;
+}
+
+.ball {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 20px solid gold;
+  top: -15px;
+  left: 50%;
+  margin-left: -12px;
+  z-index: 20;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.result {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.result p {
+  margin: 0;
+}
+
+.result strong {
+  font-size: 2.2em;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.result strong.red {
+  color: #ff6b6b;
+}
+
+.result strong.black {
+  color: #ffffff;
+}
+
+.result strong.green {
+  color: #51cf66;
+}
+
+/* Bets Section */
+.bets-section {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.bet-input {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.bet-input label {
+  font-weight: bold;
+  min-width: 150px;
+}
+
+.bet-input input {
+  padding: 8px 12px;
+  border: 2px solid gold;
+  border-radius: 5px;
+  background: white;
+  color: black;
+  font-size: 1em;
+  width: 100px;
+}
+
+.bet-input input:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Numbers Grid */
+.numbers-grid {
+  margin-bottom: 20px;
+}
+
+.numbers-grid button {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  border: 2px solid gold;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: white;
+}
+
+.numbers-grid button.red {
+  background: red;
+}
+
+.numbers-grid button.black {
+  background: black;
+}
+
+.numbers-grid button.green {
+  background: green;
+}
+
+.numbers-grid button:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.numbers-grid button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Even Money Bets */
+.even-money-bets {
+  margin-bottom: 20px;
+}
+
+.even-money-bets button {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 8px;
+  background: #444;
+  border: 2px solid gold;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95em;
+}
+
+.even-money-bets .red-btn {
+  background: red;
+}
+
+.even-money-bets .black-btn {
+  background: black;
+}
+
+.even-money-bets button:hover:not(:disabled) {
+  background-color: #666;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  transform: translateY(-2px);
+}
+
+.even-money-bets button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Selected Bets */
+.selected-bets {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-left: 4px solid gold;
+}
+
+.bets-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.bet-item {
+  background: rgba(255, 215, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gold;
+}
+
+.bet-item span {
+  font-weight: bold;
+}
+
+.remove-btn {
+  background: #ff4444;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.remove-btn:hover {
+  background: #ff0000;
+}
+
+.clear-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background: #ff6b6b;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background: #ff0000;
+  transform: scale(1.05);
+}
+
+.clear-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Spin Section */
+.spin-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.spin-btn {
+  padding: 15px 40px;
+  font-size: 1.5em;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  border: 3px solid #ffaa00;
+  border-radius: 50px;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.spin-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+}
+
+.spin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Message */
+.message {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  min-height: 30px;
+}
+
+.message.win {
+  background: rgba(81, 207, 102, 0.3);
+  color: #51cf66;
+  border: 2px solid #51cf66;
+}
+
+.message.lose {
+  background: rgba(255, 68, 68, 0.3);
+  color: #ff6b6b;
+  border: 2px solid #ff6b6b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .roulette-container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .roulette-wheel {
+    width: 250px;
+    height: 250px;
+  }
+
+  .numbers-grid button {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    font-size: 0.8em;
+  }
+
+  .even-money-bets button {
+    padding: 8px 10px;
+    margin: 5px;
+    font-size: 0.85em;
+  }
+
+  .bets-list {
+    grid-template-columns: 1fr;
+  }
+}

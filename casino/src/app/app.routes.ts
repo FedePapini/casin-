@@ -6,6 +6,8 @@ import { BlackjackComponent } from './pages/blackjack/blackjack';
 import { SlotsComponent } from './pages/slots/slots';
 import { F1Component } from './pages/f1/f1';
 import { WalletComponent } from './pages/wallet/wallet';
+import { RouletteComponent } from './pages/roulette/roulette';
+import { ScratchCardComponent } from './pages/scratch-card/scratch-card';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -17,6 +19,8 @@ export const routes: Routes = [
 
   { path: 'blackjack', component: BlackjackComponent, canActivate: [AuthGuard] },
   { path: 'slots', component: SlotsComponent, canActivate: [AuthGuard] },
+  { path: 'roulette', component: RouletteComponent, canActivate: [AuthGuard] },
+  { path: 'scratch', component: ScratchCardComponent, canActivate: [AuthGuard] },
   { path: 'f1', component: F1Component, canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: '' }

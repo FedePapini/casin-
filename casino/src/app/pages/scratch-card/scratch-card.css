@@ -1,0 +1,558 @@
+.scratch-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 20px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(255,215,0,0.1);
+  border: 2px solid gold;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(255,215,0,0.5);
+  color: #ffd700;
+  font-weight: bold;
+  letter-spacing: 2px;
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(255,215,0,0.5); }
+  50% { text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 40px rgba(255,215,0,0.8); }
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Bet Section */
+.bet-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.bet-input {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 15px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.bet-input label {
+  font-weight: bold;
+  white-space: nowrap;
+  color: #ffd700;
+}
+
+.bet-input input {
+  padding: 10px 15px;
+  border: 2px solid gold;
+  border-radius: 8px;
+  background: white;
+  color: black;
+  font-size: 1em;
+  width: 120px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.bet-input input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.bet-input input:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.play-btn {
+  padding: 14px 40px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  border: 3px solid #ffaa00;
+  border-radius: 12px;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.play-btn:hover:not(:disabled) {
+  transform: scale(1.12) translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.8);
+}
+
+.play-btn:active:not(:disabled) {
+  transform: scale(0.98) translateY(0);
+}
+
+.play-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Message */
+.message {
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  min-height: 40px;
+  margin-bottom: 20px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.message.win {
+  background: rgba(81, 207, 102, 0.4);
+  color: #51cf66;
+  border: 2px solid #51cf66;
+  animation: winPulse 0.6s ease-in-out;
+}
+
+.message.lose {
+  background: rgba(255, 68, 68, 0.4);
+  color: #ff6b6b;
+  border: 2px solid #ff6b6b;
+}
+
+@keyframes winPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Game Board */
+.game-board {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  max-width: 750px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.card {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform: perspective(1000px);
+}
+
+.card:hover:not(.revealed) {
+  transform: scale(1.08) rotateY(5deg);
+  box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+}
+
+.card-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffb300 100%);
+  border: 3px solid #ffaa00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.6);
+  transition: all 0.4s;
+  box-shadow: inset 0 2px 8px rgba(255,255,255,0.5), inset 0 -2px 8px rgba(0,0,0,0.3);
+}
+
+.card-cover::before {
+  content: '🎫';
+  position: absolute;
+}
+
+.card.scratching .card-cover {
+  opacity: 0.3;
+  transform: scale(0.95);
+  filter: brightness(1.2);
+}
+
+.card.scratching::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  z-index: 15;
+  animation: scratch 0.3s ease-out;
+}
+
+@keyframes scratch {
+  0% {
+    opacity: 1;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+.card.revealed .card-cover {
+  display: none;
+}
+
+.card.matched {
+  animation: matchPulse 0.6s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 12px 35px rgba(255, 215, 0, 0.5) !important;
+}
+
+@keyframes matchPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 8px 20px rgba(255, 215, 0, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 12px 35px rgba(255, 215, 0, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+.card-value {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
+  border-radius: 15px;
+  box-shadow: inset 0 2px 8px rgba(255,255,255,0.3);
+  animation: revealCard 0.5s ease-out;
+}
+
+@keyframes revealCard {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotateY(180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0);
+  }
+}
+
+/* Instructions */
+.instructions {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  border-radius: 15px;
+  border-left: 4px solid gold;
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.instructions ul {
+  margin: 15px 0 0 0;
+  padding-left: 20px;
+}
+
+.instructions li {
+  font-size: 1.1em;
+  margin: 10px 0;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.instructions ul ul {
+  margin-top: 10px;
+  padding-left: 40px;
+}
+
+.instructions ul ul li {
+  font-size: 0.95em;
+  margin: 5px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .scratch-container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .cards-grid {
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .card {
+    width: 120px;
+    height: 120px;
+  }
+
+  .card-value {
+    font-size: 2.5em;
+  }
+
+  .bet-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bet-input {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .bet-input input {
+    width: 100%;
+  }
+
+  .play-btn {
+    width: 100%;
+  }
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Mobile Devices (< 576px) */
+@media (max-width: 575px) {
+  .scratch-container {
+    max-width: 100%;
+    margin: 10px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+
+  .bet-section {
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+
+  .bet-input {
+    width: 100%;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .bet-input label {
+    font-size: 0.9em;
+  }
+
+  .bet-input input {
+    width: 100%;
+    font-size: 0.95em;
+    padding: 8px 12px;
+    width: 80px;
+  }
+
+  .play-btn {
+    width: 100%;
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+
+  .end-btn {
+    width: 100%;
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+
+  .message {
+    font-size: 0.95em;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .card {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+  }
+
+  .card-value {
+    font-size: 2em;
+  }
+
+  .instructions {
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .instructions h2 {
+    font-size: 1.2em;
+  }
+
+  .instructions ul {
+    font-size: 0.9em;
+    padding-left: 15px;
+  }
+
+  .instructions li {
+    margin-bottom: 6px;
+  }
+}
+
+/* Tablet Devices (576px - 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .scratch-container {
+    max-width: 100%;
+    margin: 15px;
+    padding: 18px;
+  }
+
+  h1 {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+  }
+
+  .bet-section {
+    gap: 12px;
+    margin-bottom: 25px;
+    padding: 18px;
+  }
+
+  .bet-input input {
+    width: 100px;
+  }
+
+  .play-btn {
+    padding: 12px 35px;
+    font-size: 1.1em;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .card {
+    width: 110px;
+    height: 110px;
+  }
+
+  .card-value {
+    font-size: 2.8em;
+  }
+
+  .instructions {
+    font-size: 0.95em;
+  }
+}
+
+/* Large Tablets & Small Desktops (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .scratch-container {
+    max-width: 95%;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 28px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 11px;
+    max-width: 100%;
+  }
+
+  .card {
+    width: 120px;
+    height: 120px;
+  }
+
+  .card-value {
+    font-size: 3.2em;
+  }
+}
+
+/* Desktop (> 1024px) - Default */
+@media (min-width: 1025px) {
+  .scratch-container {
+    max-width: 900px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    max-width: 750px;
+  }
+
+  .card {
+    width: 130px;
+    height: 130px;
+  }
+}
