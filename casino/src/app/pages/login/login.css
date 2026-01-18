@@ -1,0 +1,119 @@
+/* SFONDO */
+.casino-bg {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #2b0000, #050505);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* CARD */
+.casino-login-card {
+  background: linear-gradient(180deg, #0d0d0d, #050505);
+  padding: 40px;
+  width: 380px;
+  border-radius: 18px;
+  box-shadow:
+    0 0 30px rgba(255, 215, 0, 0.15),
+    0 0 80px rgba(255, 0, 0, 0.05);
+  text-align: center;
+  border: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+/* LOGO */
+.casino-logo {
+  color: gold;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+/* SOTTOTITOLO */
+.casino-subtitle {
+  color: #bbb;
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+
+/* FORM */
+.casino-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* CAMPI */
+.casino-field label {
+  color: #aaa;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.casino-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #0f0f0f;
+  border-radius: 8px;
+  border: 1px solid #333;
+  color: #fff;
+  outline: none;
+  transition: 0.3s;
+}
+
+.casino-input:focus {
+  border-color: gold;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* BOTTONI */
+.casino-btn {
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  letter-spacing: 1px;
+}
+
+.casino-btn.gold {
+  background: linear-gradient(135deg, gold, #ffb700);
+  border: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.casino-btn.gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px gold;
+}
+
+.casino-btn.outline {
+  background: transparent;
+  border: 1px solid gold;
+  color: gold;
+}
+
+.casino-btn.outline:hover {
+  background: gold;
+  color: #000;
+}
+
+/* ERRORI */
+.casino-error {
+  color: #ff4d4d;
+  font-size: 13px;
+}
+
+/* BONUS */
+.casino-bonus {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.casino-bonus span {
+  color: gold;
+  font-weight: bold;
+}

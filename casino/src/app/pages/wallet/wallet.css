@@ -1,7 +1,167 @@
-.card { border:1px solid #ddd; border-radius:12px; padding:14px; max-width:520px; }
-.row { display:flex; gap:10px; align-items:end; flex-wrap:wrap; margin-top:10px; }
-label { display:block; width:100%; }
-input { width:180px; padding:8px; border:1px solid #ccc; border-radius:10px; }
-button { padding:8px 12px; border:1px solid #ccc; background:#fff; cursor:pointer; border-radius:10px; }
-.msg { margin-top:10px; }
-.hint { margin-top:10px; color:#555; font-size:14px; }
+/* ===== CARD ===== */
+.wallet-card {
+  background: linear-gradient(145deg, #1a0000, #3a0000);
+  padding: 40px 35px;
+  border-radius: 25px;
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
+  max-width: 480px;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.wallet-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255,215,0,0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.wallet-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+}
+
+/* ===== CREDITS PILL ===== */
+.credits-pill {
+  background: #222;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 24px;
+  font-weight: 600;
+  color: gold;
+  text-shadow: 0 0 5px gold;
+  animation: glowCredits 2s infinite alternate;
+  display: inline-block;
+  margin-bottom: 30px;
+  min-width: 200px;
+  text-align: center;
+}
+
+/* Glow animation */
+@keyframes glowCredits {
+  0% { text-shadow: 0 0 5px gold; }
+  50% { text-shadow: 0 0 15px gold, 0 0 25px darkorange; }
+  100% { text-shadow: 0 0 5px gold; }
+}
+
+/* ===== INPUT & BUTTON ===== */
+.add-credits-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.input-wrapper {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.amount-input {
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  margin-top: 6px;
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.1);
+  background: #111;
+  color: white;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.amount-input:focus {
+  transform: scale(1.03);
+  box-shadow: inset 0 0 16px rgba(255,215,0,0.6);
+}
+
+/* ===== BUTTON ===== */
+.btn-add {
+  background: linear-gradient(45deg, gold, orange);
+  color: #111;
+  font-weight: bold;
+  border-radius: 22px;
+  padding: 14px 28px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-add:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px gold, 0 0 35px orange;
+}
+
+/* Pulsante highlight animato */
+.btn-add::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.1);
+  transition: width 0.3s ease;
+}
+
+.btn-add:hover::after {
+  width: 100%;
+}
+
+/* ===== MESSAGGIO ===== */
+.wallet-msg {
+  margin-top: 22px;
+  font-weight: 600;
+  color: lime;
+  text-shadow: 0 0 6px lime, 0 0 14px darkgreen;
+  animation: pulseMsg 1.5s infinite alternate;
+}
+
+/* Pulsazione messaggio */
+@keyframes pulseMsg {
+  0% { text-shadow: 0 0 6px lime, 0 0 14px darkgreen; }
+  50% { text-shadow: 0 0 14px lime, 0 0 28px darkgreen; }
+  100% { text-shadow: 0 0 6px lime, 0 0 14px darkgreen; }
+}
+
+/* ===== NOTE ===== */
+.wallet-note {
+  margin-top: 18px;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.4;
+  font-style: italic;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== ANIMAZIONE GRADIENT SFONDO ===== */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  animation: gradientBG 12s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+}

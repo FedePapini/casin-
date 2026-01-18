@@ -11,8 +11,12 @@
   position: sticky;
   top: 10px;
   z-index: 20;
+
+  /* Animazione sfondo lento */
+  animation: navbarGlow 10s ease-in-out infinite alternate;
 }
 
+/* ===== BRAND ===== */
 .brand{
   display:flex;
   flex-direction:column;
@@ -21,13 +25,18 @@
   letter-spacing: .6px;
   text-decoration:none;
   color: var(--text);
+
+  /* Animazione pulse */
+  animation: brandPulse 2.5s ease-in-out infinite alternate;
 }
+
 .brand small{
   font-weight:600;
   color: rgba(246,243,255,.68);
   letter-spacing:.2px;
 }
 
+/* ===== LINKS ===== */
 .links{
   display:flex;
   gap:10px;
@@ -44,13 +53,17 @@
   text-decoration:none;
   color: var(--text);
   opacity:.92;
+  transition: all 0.3s ease;
 }
+
 .navLink:hover{
   opacity:1;
   border-color: rgba(255,43,214,.28);
   box-shadow: 0 0 20px rgba(255,43,214,.12);
+  transform: scale(1.05);
 }
 
+/* ===== WALLET ===== */
 .wallet{
   display:inline-flex;
   align-items:center;
@@ -59,5 +72,30 @@
   border-radius: 999px;
   border: 1px solid rgba(246,211,107,.22);
   background: linear-gradient(90deg, rgba(246,211,107,.14), rgba(255,239,154,.06));
+  position: relative;
+  overflow: hidden;
+
+  /* Animazione luce scorrevole */
+  animation: walletShine 3s linear infinite;
 }
+
 .wallet b{ color: var(--gold2); }
+
+/* ===== ANIMAZIONI ===== */
+@keyframes brandPulse {
+  0% { text-shadow: 0 0 4px gold, 0 0 8px darkorange; }
+  50% { text-shadow: 0 0 10px gold, 0 0 20px darkorange; }
+  100% { text-shadow: 0 0 4px gold, 0 0 8px darkorange; }
+}
+
+@keyframes navbarGlow {
+  0% { box-shadow: 0 18px 60px rgba(0,0,0,.35); }
+  50% { box-shadow: 0 18px 80px rgba(255,43,214,.12); }
+  100% { box-shadow: 0 18px 60px rgba(0,0,0,.35); }
+}
+
+@keyframes walletShine {
+  0% { background-position: -200% 0; }
+  50% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

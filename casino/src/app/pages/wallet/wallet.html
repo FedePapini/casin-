@@ -1,18 +1,35 @@
-<h2 class="vegas-title">💰 Wallet</h2>
+<div class="vegas-card wallet-card">
 
-<div class="vegas-card">
-  <p class="vegas-pill">Crediti attuali: <b>{{ credits$ | async }}</b></p>
+  <!-- Titolo Wallet -->
+  <h2 class="vegas-title">💰 WALLET</h2>
 
-  <div class="vegas-row" style="margin-top:12px;">
-    <div>
-      <label>Quanto vuoi aggiungere?</label>
-      <input class="vegas-input" type="number" [(ngModel)]="amount" min="1" step="1" />
-    </div>
-    <button class="vegas-btn gold" (click)="add()">Aggiungi crediti</button>
+  <!-- Crediti attuali con animazione di counting -->
+  <div class="credits-wrapper">
+    <p class="vegas-pill credits-pill">
+      Crediti attuali: 
+      <b class="credits-count">{{ credits$ | async }}</b>
+    </p>
   </div>
 
-  <p style="margin-top:12px;" *ngIf="msg">{{ msg }}</p>
-  <p class="vegas-muted" style="margin-top:8px;">
+  <!-- Aggiungi crediti -->
+  <div class="vegas-row add-credits-row">
+    <div class="input-wrapper">
+      <label>Quanto vuoi aggiungere?</label>
+      <input 
+        class="vegas-input amount-input" 
+        type="number" 
+        [(ngModel)]="amount" 
+        min="1" step="1"
+        placeholder="0"
+      />
+    </div>
+    <button class="vegas-btn gold btn-add" (click)="add()">💸 Aggiungi</button>
+  </div>
+
+  <!-- Messaggio interattivo -->
+  <p class="wallet-msg" *ngIf="msg">{{ msg }}</p>
+
+  <p class="vegas-muted wallet-note">
     Crediti virtuali: puoi ricaricare quanto vuoi.
   </p>
 </div>
